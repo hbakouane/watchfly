@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ActorsController;
+use App\Http\Controllers\TvShowsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\ActorsController;
 Route::get('/', [MoviesController::class, 'index']);
 Route::get('/movie/{movie_id}', [MoviesController::class, 'show']);
 Route::resource('/actor', ActorsController::class)->only(['index', 'show']);
+Route::get('/tv', [TvShowsController::class, 'index']);
+Route::get('/tv/{id}', [TvShowsController::class, 'show']);
 
 Route::fallback(function () {
     return view("errors.404");

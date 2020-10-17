@@ -129,6 +129,12 @@ a:hover, a:focus {
     height: 600px;
     width:auto;
 }
+.bg-none {
+    background: none!important;
+}
+.avatar {
+    height: 223px;
+}
 @media screen and (max-width: 768px) {
     .marginTopOnMobile {
         margin-top: 10px!important;

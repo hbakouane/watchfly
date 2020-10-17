@@ -37,7 +37,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a href="/" class="nav-link font-weight-bold">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/movies" class="nav-link font-weight-bold">Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/tv" class="nav-link font-weight-bold">Tv Shows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/actor" class="nav-link font-weight-bold">Actors</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

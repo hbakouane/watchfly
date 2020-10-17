@@ -14,7 +14,12 @@ class ActorsController extends Controller
      */
     public function index()
     {
-        //
+        $actors = Http::withToken(env("TMDB_TOKEN"))
+        ->get("https://api.themoviedb.org/3/person/popular")
+        ->json()['results'];
+        return view("actors.index", [
+            'actors' => $actors
+        ]);
     }
 
     /**
