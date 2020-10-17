@@ -1,0 +1,144 @@
+body {
+    background: #1a202c;
+    font-family: 'Montserrat'!important;
+}
+.container-lg, .container-md, .container-sm, .container {
+    max-width: 85%;
+}
+nav.navbar.navbar-expand-md.shadow-sm {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #90939a;
+}
+.yellow {
+    color: #fcdab7!important;
+}
+input, input:focus {
+    box-shadow: 0 0 0 0!important;
+}
+.input {
+    height: 49px;
+}
+input:focus {
+    border: 1px solid #121929!important;
+}
+.marginTop {
+    margin-top: 10px!important;
+}
+.marginBottom {
+    margin-bottom: 10px!important;
+}
+.card {
+    margin-top: 20px;
+}
+.logo {
+    height: 70px;
+}
+.hidden {
+    display: none!important;
+}
+.full-width {
+    width: 100%!important;
+}
+.filled {
+    color: orange;
+}
+.movieBox {
+    transition: .2s;
+    padding-top: 20px;
+}
+.movieBox:hover {
+    border: 1px dashed white!important;
+    cursor: pointer;
+    transition: .5s;
+}
+.movieBox:hover {
+    transform: scale(1.05);
+    transition: .5s;
+}
+.main-movie {
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    height: 88vh;
+    border-bottom: 1px solid gray;
+    background-image: url("../storage/images/main-bg.jpg");
+}
+.main-movie-container {
+    padding-top: 90px;
+}
+.capital {
+    text-transform: uppercase;
+}
+.movie-description {
+    line-height: 30px;
+}
+.movie-img:hover {
+    opacity: .8;
+    box-shadow: 0px 0px 41px -24px white;
+}
+button, button:hover, button:focus {
+    box-shadow: 0 0 0 0!important;
+}
+button:hover {
+    transform: scale(0.98);
+}
+button:focus {
+    transform: scale(0.97);
+}
+a {
+    color: white;
+}
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
+.btn-yellow {
+    background: #c18240;
+}
+.btn-yellow:hover, .btn-yellow:focus {
+    background: #b7722a;
+}
+.btn-red {
+    background: #d71a29;
+}
+.btn-red:hover, .btn-red:focus {
+    background: #bb1825;
+}
+.full-width {
+    width: 100%!important;
+}
+.btn-lg {
+    height: 49px!important;
+}
+.main-movie-thumb {
+    height: 550px;
+}
+.left-half-holder, .center-horisontal {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.bg-dark-blue {
+    background: #283144!important;
+}
+.pointer {
+    cursor: pointer;
+}
+.main-movie-image-single {
+    height: 600px;
+    width:auto;
+}
+@media screen and (max-width: 768px) {
+    .marginTopOnMobile {
+        margin-top: 10px!important;
+    }
+    .main-movie {
+        height: fit-content;
+        padding-bottom: 30px;
+    }
+    .main-movie-image-single {
+        height: auto;
+        margin-bottom: 20px;
+    }
+}
