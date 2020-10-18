@@ -4,30 +4,40 @@
 <div class="container-fluid main-movie">
     <div class="container main-movie-container">
         <div class="row">
-            <div class="col-md-6 left-half-holder">
-                <p class="h1 text-light font-weight-bolder capital text-left">welcome TO THE SUDDEN DEATH</p>
-                <p>
-                    <span><i class="fa fa-star filled"></i><span class="text-light"> 4.9 / 5 | Sep 12, 2020 | Action, Drama, Comedie </span></span>
-                </p>
-                <p class="marginTop text-light h6 movie-description">
-                    Jesse Freeman is a former special forces officer and explosives expert now working a regular job as a
-                    security guard in a state-of-the-art basketball arena. Trouble erupts when a tech-savvy cadre of 
-                    terrorists kidnap the team's owner and Jesse's daughter during opening night. Facing a ticking 
-                    clock and impossible odds, it's up to Jesse to not only save them but also a full house of fans 
-                    in this highly charged action thriller.
-                </p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-yellow full-width text-center text-light btn-lg marginTop" style="margin-right: 10px"><i class="fa fa-video"></i> Play Trailer</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-red full-width text-center text-light btn-lg marginTop"><i class="fa fa-film"></i> Watch Movie</button>
+            @foreach ($topRated as $top)
+                @if ($loop->index < 1)
+                <div class="col-md-6 left-half-holder">
+                    <p class="text-light">— Top Rated</p>
+                    <p class="h1 text-light font-weight-bolder capital text-left">{{ $top['original_title'] }}</p>
+                    <p>
+                        <span>
+                            <i class="fa fa-star filled"></i>
+                            <span class="text-light"> {{ $top['vote_average'] }} | {{ \Carbon\Carbon::parse($top['release_date'])->format("M D, Y") }} | 
+                                @foreach ($top['genre_ids'] as $topGenre)
+                                    {{ $genres->get($topGenre) }}@if(!$loop->last), @endif
+                                @endforeach    
+                            </span>
+                        </span>
+                    </p>
+                    <p class="marginTop text-light h6 movie-description">
+                        {{ $top['overview'] }}
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-yellow full-width text-center text-light btn-lg marginTop" style="margin-right: 10px"><i class="fa fa-video"></i> Play Trailer</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-red full-width text-center text-light btn-lg marginTop"><i class="fa fa-film"></i> Watch Movie</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 d-flex justify-content-center">
-                <img src="https://fr.web.img4.acsta.net/pictures/17/11/09/02/17/0404218.jpg" class="img-fluid marginTop main-movie-thumb">
-            </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <a href="/movie/{{ $top['id'] }}">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ $top['poster_path'] }}" class="img-fluid marginTop rounded main-movie-thumb">
+                    </a>
+                </div>
+                @endif
+            @endforeach
         </div>
     </div>
 </div>
@@ -77,6 +87,33 @@
                         <p class="text-light font-weight-bold" style="margin-top: -10px;">
                             @foreach ($nowMovie['genre_ids'] as $genre)
                                 {{ $genres->get($genre) }}@if(!$loop->last), @endif
+                            @endforeach    
+                        </p>
+                    </a>
+                </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="container">
+        <p class="yellow font-weight-bolder h3">Tv Shows</p>
+        <div class="row">
+            @foreach ($tv_shows as $show)
+                @if ($loop->index < 12)
+                <div class="col-md-2 marginTop movieBox">
+                    <a href="/tv/{{ $show['id'] }}">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ $show['poster_path'] }}" class="img-fluid movie-img">
+                        <p class="text-light font-weight-bold marginTop h5">{{ $show['original_name'] }}</p>
+                        <p>
+                            <i class="fa fa-star filled"></i> 
+                            <span class="text-light">{{ $show['vote_average'] }} | </span>
+                            <span class="text-light">{{ \Carbon\Carbon::parse($show['first_air_date'])->format('M D, Y') }}</span>
+                        </p>
+                        <p class="text-light font-weight-bold" style="margin-top: -10px;">
+                            @foreach ($show['genre_ids'] as $genre)
+                                {{ $genres->get($genre) ?? "Undefined" }}@if(!$loop->last), @endif
                             @endforeach    
                         </p>
                     </a>

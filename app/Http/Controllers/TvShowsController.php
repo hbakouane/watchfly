@@ -32,8 +32,28 @@ class TvShowsController extends Controller
             ->get("https://api.themoviedb.org/3/tv/".$id)
             ->json();
          
+        $images = Http::withToken(env("TMDB_TOKEN"))
+            ->get("https://api.themoviedb.org/3/tv/".$id."/images")
+            ->json();
+         
+        $similarMovies = Http::withToken(env("TMDB_TOKEN"))
+            ->get("https://api.themoviedb.org/3/tv/".$id."/similar")
+            ->json()['results'];
+         
+        // get the genres array
+        $genresArray = Http::withToken(env('TMDB_TOKEN'))
+            ->get("https://api.themoviedb.org/3/genre/movie/list")
+            ->json()['genres'];
+        // collect the genres array
+        $genres = collect($genresArray)->mapWithKeys(function ($genres) {
+            return [$genres['id'] => $genres['name']];
+        });  
+
         return view("shows.show", [
             'show' => $show,
+            'images' => $images,
+            'similarShows' => $similarMovies,
+            'genres' => $genres
         ]);
     }
 }

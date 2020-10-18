@@ -36,6 +36,10 @@ class MoviesController extends Controller
             return [$genres['id'] => $genres['name']];
         });    
 
+        $tv_shows = Http::withToken(env("TMDB_TOKEN"))
+            ->get("https://api.themoviedb.org/3/tv/popular")
+            ->json()['results'];
+
 
         // Now Playing
         $nowPlaying = Http::withToken(env('TMDB_TOKEN'))
@@ -44,14 +48,21 @@ class MoviesController extends Controller
 
         // Trending
         $trendingMovies = Http::withToken(env('TMDB_TOKEN'))
-        ->get("https://api.themoviedb.org/3/trending/movie/day")
-        ->json()['results'];
+            ->get("https://api.themoviedb.org/3/trending/movie/day")
+            ->json()['results'];
     
+        // Top Rated Movie
+        $topRated = Http::withToken(env('TMDB_TOKEN'))
+            ->get("https://api.themoviedb.org/3/movie/top_rated")
+            ->json()['results'];
+        
         return view("homepage", [
             'popularMovies' => $popularMovies,
             'genres' => $genres,
             'nowPlaying' => $nowPlaying,
-            'trendingMovies' => $trendingMovies
+            'trendingMovies' => $trendingMovies,
+            'tv_shows' => $tv_shows,
+            'topRated' => $topRated
         ]);
     }
 
