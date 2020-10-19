@@ -73,19 +73,6 @@
                                 </div>
                             </li>
                         @endauth
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fa fa-user"></i> My Account
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="/login" class="dropdown-item">
-                                    Login
-                                </a>
-                                <a href="/register" class="dropdown-item">
-                                    Register
-                                </a>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
